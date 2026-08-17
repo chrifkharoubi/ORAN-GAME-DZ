@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ORAN GAME DZ - Jeux vidéo, consoles et accessoires gaming en Algérie.">
+  <title>ORAN GAME DZ| Gaming Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <img src="logo.png" alt="Game Shop ORAN" onerror="this.style.display='none'">
+        <span>ORAN GAME  <b>DZ</b></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Accueil</a>
+        <a href="#products">Produits</a>
+        <a href="#offers">Offres</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="cart-btn" id="openCart" aria-label="Ouvrir le panier">
+        🛒 <span>Panier</span> <b id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">🎮 ORAN GAME DZ • 📍HAI ESSALAM</div>
+          <h1>LEVEL UP<br><span>YOUR GAME.</span></h1>
+          <p>Consoles, jeux vidéo et accessoires gaming. Commandez en ligne et recevez votre commande partout en Algérie.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#products">Voir les produits <span>→</span></a>
+            <a class="btn ghost" href="#contact">Nous contacter</a>
+          </div>
+          <div class="hero-stats">
+            <div><b>58</b><small>Wilayas</small></div>
+            <div><b>24/7</b><small>Commandes</small></div>
+            <div><b>100%</b><small>Gaming</small></div>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <div class="orb"></div>
+          <div class="hero-card">
+            <div class="mini-label">GAME SHOP ORAN</div>
+            <div class="controller"> <img src="logo.png" alt="logo"></div>
+            <div class="hero-card-title">PLAY<br><span>UPGRADE</span><br>ENJOY</div>
+          </div>
+          <div class="floating f1">PS5</div>
+          <div class="floating f2">XBOX</div>
+          <div class="floating f3">PC</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories container">
+      <button class="cat active" data-category="all">⚡ Tout</button>
+      <button class="cat" data-category="consoles">🎮 Consoles</button>
+      <button class="cat" data-category="games">🕹️ Jeux</button>
+      <button class="cat" data-category="accessories">🎧 Accessoires</button>
+      <button class="cat" data-category="offers">🔥 Offres</button>
+    </section>
+
+    <section class="products-section container" id="products">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">SHOP NOW</div>
+          <h2>Nos produits</h2>
+        </div>
+        <div class="search">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Rechercher un produit...">
+        </div>
+      </div>
+
+      <div class="products" id="productGrid"></div>
+      <div class="empty" id="emptyState" hidden>Aucun produit trouvé.</div>
+    </section>
+
+    <section class="offer-banner container" id="offers">
+      <div>
+        <span class="eyebrow">🔥 HOT DEAL</span>
+        <h2>Prêt à passer au niveau supérieur ?</h2>
+        <p>Ajoutez vos produits au panier et envoyez votre commande directement à WhatsApp.</p>
+      </div>
+      <a class="btn primary" href="#products">Shop Gaming →</a>
+    </section>
+
+    <section class="contact container" id="contact">
+      <div class="contact-card">
+        <div>
+          <div class="eyebrow">ORAN GAME DZ</div>
+          <h2>Besoin d'aide ?</h2>
+          <p>Pour les disponibilités, prix ou commandes, contactez-nous directement.</p>
+        </div>
+        <div class="contact-info">
+          <a href="tel:0778519943">📞 0778 51 99 43</a>
+          <a href="mailto:orangamedz.com">✉️ gameshoporan@gmail.com</a>
+          <span>📍 Hai Essalam ,Oran, Algeria</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer">
+      <span>© 2026 ORAN GAME DZ - PLAY • UPGRADE • ENJOY</span>
+      <span>by
+        @cherif.dev
+      </span>
+    </div>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-head">
+      <div><span class="eyebrow">YOUR CART</span><h2>Votre panier</h2></div>
+      <button class="close" id="closeCart">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-bottom">
+      <div class="total-row"><span>Total</span><strong id="cartTotal">0 DA</strong></div>
+      <button class="btn primary full" id="checkoutBtn">Commander sur WhatsApp →</button>
+      <button class="clear" id="clearCart">Vider le panier</button>
+    </div>
+  </aside>
+
+  <!-- Checkout modal -->
+  <div class="modal-wrap" id="checkoutModal">
+    <div class="modal">
+      <button class="close modal-close" id="closeModal">×</button>
+      <div class="eyebrow">FINALISER LA COMMANDE</div>
+      <h2>Vos informations</h2>
+      <p class="modal-sub">Remplissez les informations ci-dessous. Votre commande sera envoyée directement à WhatsApp.</p>
+
+      <form id="orderForm">
+        <label>Nom et prénom
+          <input name="name" required placeholder="Ex : Mohamed Amine">
+        </label>
+        <label>Numéro de téléphone
+          <input name="phone" required inputmode="tel" placeholder="05 XX XX XX XX">
+        </label>
+        <label>Wilaya
+          <select name="wilaya" id="wilaya" required></select>
+        </label>
+        <label>Commune / Ville
+          <input name="commune" required placeholder="Ex : Oran">
+        </label>
+        <label>Adresse
+          <textarea name="address" required placeholder="Adresse de livraison"></textarea>
+        </label>
+        <label>Note (facultatif)
+          <textarea name="note" placeholder="Une remarque concernant la commande..."></textarea>
+        </label>
+        <button class="btn primary full" type="submit">Envoyer la commande sur WhatsApp 📲</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
